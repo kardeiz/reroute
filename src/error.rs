@@ -18,13 +18,6 @@ impl error::Error for RouterError {
 
 impl fmt::Display for RouterError {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        match *self {
-            RouterError::TooFewRoutes => {
-                write!(f, "Cannot make RegexSet with fewer than 2 routes.")
-            },
-            RouterError::BadSet => {
-                write!(f, "Error making RegexSet.")
-            }
-        }
+        error::Error::description(self).fmt(f)
     }
 }
